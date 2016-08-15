@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.skullabs.kikaha</groupId>
+        <version>
+            <!-- kikaha-version -->2.0.2<!-- /kikaha-version -->
+        </version>
+        <artifactId>kikaha-project</artifactId>
+    </parent>
+
+    <groupId>com.sizebay.kikaha</groupId>
+    <artifactId>sizebay-kikaha-jdbi</artifactId>
+    <version>0.1.0</version>
+    <packaging>jar</packaging>
+    <name>${project.artifactId}</name>
+
+    <properties>
+        <!-- project configurations -->
+        <config.dir.source>source</config.dir.source>
+        <config.dir.resource>resources</config.dir.resource>
+        <config.dir.test.source>tests</config.dir.test.source>
+        <config.dir.test.resource>tests-resources</config.dir.test.resource>
+        <config.dir.output>output</config.dir.output>
+        <config.dir.web>webapp</config.dir.web>
+        <!-- dependencies version configuration -->
+        <version.jdbi>3.0.0-alpha1</version.jdbi>
+    </properties>
+
+    <dependencies>
+        <!-- kikaha-dependencies -->
+        <dependency>
+            <groupId>io.skullabs.kikaha</groupId>
+            <artifactId>kikaha-injection</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.skullabs.kikaha</groupId>
+            <artifactId>kikaha-db</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3</artifactId>
+            <version>${version.jdbi}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jdbi</groupId>
+            <artifactId>jdbi3-sqlobject</artifactId>
+            <version>${version.jdbi}</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.38</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- /kikaha-dependencies -->
+    </dependencies>
+
+</project>
