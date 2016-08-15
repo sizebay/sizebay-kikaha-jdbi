@@ -16,6 +16,29 @@
     <version>0.1.0</version>
     <packaging>jar</packaging>
     <name>${project.artifactId}</name>
+    <url>https://github.com/sizebay/sizebay-kikaha-jdbi</url>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>miere</id>
+            <name>Miere Liniel Teixeira</name>
+            <email>miere.teixeira@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:sizebay/sizebay-kikaha-jdbi.git</connection>
+        <developerConnection>scm:git:git@github.com:sizebay/sizebay-kikaha-jdbi.git</developerConnection>
+        <url>scm:git:git@github.com:sizebay/sizebay-kikaha-jdbi.git</url>
+    </scm>
 
     <properties>
         <!-- project configurations -->
