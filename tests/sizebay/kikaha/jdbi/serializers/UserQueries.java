@@ -2,7 +2,7 @@ package sizebay.kikaha.jdbi.serializers;
 
 import java.util.List;
 import org.jdbi.v3.sqlobject.*;
-import sizebay.kikaha.jdbi.JDBI;
+import sizebay.kikaha.jdbi.*;
 
 @JDBI
 public interface UserQueries {
@@ -51,4 +51,8 @@ public interface UserQueries {
 
 	@SqlQuery( "SELECT u.id, u.user_name, r.role_name FROM users u JOIN roles r ON r.user_id = u.id WHERE id = :id" )
 	User retrieveUserFullProfileById( @Bind("id") long id );
+
+	default void aMethodThatThrowsMyCustomException(){
+		throw new MyCustomException();
+	}
 }

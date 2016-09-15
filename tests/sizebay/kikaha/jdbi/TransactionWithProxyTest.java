@@ -44,4 +44,9 @@ public class TransactionWithProxyTest {
 	private void ensureThatDoesNotSavedARoleForPaul( User paul ) throws IOException {
 		assertEquals( q.retrieveUserRoleByUserId( paul.id ).size(), 1 );
 	}
+
+	@Test(expected = MyCustomException.class)
+	public void ensureThatIsAbleToReceiveTheSameExceptionThrownOnTheQueryObject(){
+		q.aMethodThatThrowsMyCustomException();
+	}
 }

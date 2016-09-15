@@ -24,7 +24,12 @@ public class QueryInterfaceInvocationHandler implements InvocationHandler {
 		finally { h.close(); }
 	}
 
-	private RuntimeException databaseException(Method method, Throwable cause ) {
+	private RuntimeException databaseException( final Method method, Throwable cause ) {
+		Throwable rootCause = cause;
+		while( rootCause.getCause() != null )
+			rootCause = rootCause.getCause();
+		if ( rootCause instanceof RuntimeException )
+			throw (RuntimeException)rootCause;
 		return new DatabaseException( "Could no execute " + method, cause );
 	}
 
