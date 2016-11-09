@@ -6,7 +6,7 @@
     <parent>
         <groupId>io.skullabs.kikaha</groupId>
         <version>
-            <!-- kikaha-version -->2.0.3<!-- /kikaha-version -->
+            <!-- kikaha-version -->2.1.0-alpha1<!-- /kikaha-version -->
         </version>
         <artifactId>kikaha-project</artifactId>
     </parent>
@@ -49,7 +49,7 @@
         <config.dir.output>output</config.dir.output>
         <config.dir.web>webapp</config.dir.web>
         <!-- dependencies version configuration -->
-        <version.jdbi>3.0.0-alpha1</version.jdbi>
+        <version.jdbi>3.0.0-alpha2</version.jdbi>
     </properties>
 
     <dependencies>
