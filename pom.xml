@@ -9,11 +9,12 @@
         <artifactId>kikaha-project</artifactId>
     </parent>
 
-    <artifactId>kikaha-jdbi3</artifactId>
-    <version>0.3.0</version>
-    <packaging>jar</packaging>
-    <name>${project.artifactId}</name>
-    <url>https://github.com/Ibratan/kikaha-jdbi3</url>
+		<groupId>com.sizebay.kikaha</groupId>
+		<artifactId>sizebay-kikaha-jdbi</artifactId>
+		<version>0.3.0</version>
+		<packaging>jar</packaging>
+		<name>${project.artifactId}</name>
+		<url>https://github.com/sizebay/sizebay-kikaha-jdbi</url>
 
     <licenses>
         <license>
@@ -23,27 +24,15 @@
         </license>
     </licenses>
 
-    <developers>
-        <developer>
-            <id>miere</id>
-            <name>Miere Liniel Teixeira</name>
-            <email>miere.teixeira@gmail.com</email>
-        </developer>
-        <developer>
-            <id>ronei</id>
-            <name>Ronei Vinicius Gebert</name>
-            <email>ronei_vinicius@hotmail.com</email>
-        </developer>
-    </developers>
-
-    <scm>
-        <connection>scm:git:git@github.com:Ibratan/kikaha-jdbi3.git</connection>
-        <developerConnection>scm:git:git@github.com:Ibratan/kikaha-jdbi3.git</developerConnection>
-        <url>scm:git:git@github.com:Ibratan/kikaha-jdbi3.git</url>
-    </scm>
+		<distributionManagement>
+			<repository>
+				<id>github</id>
+				<name>GitHub OWNER Apache Maven Packages</name>
+				<url>https://maven.pkg.github.com/sizebay/sizebay-kikaha-jdbi</url>
+			</repository>
+		</distributionManagement>
 
     <properties>
-        <!-- dependencies version configuration -->
         <version.jdbi>3.0.0-rc1</version.jdbi>
     </properties>
 
