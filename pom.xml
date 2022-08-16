@@ -26,9 +26,9 @@
 
 		<distributionManagement>
 			<repository>
-				<id>github</id>
-				<name>GitHub OWNER Apache Maven Packages</name>
-				<url>https://maven.pkg.github.com/sizebay/sizebay-kikaha-jdbi</url>
+				<id>sizebay--sizebay-kikaha-jdbi</id>
+				<name>sizebay--sizebay-kikaha-jdbi</name>
+				<url>https://sizebay-839781922904.d.codeartifact.us-east-1.amazonaws.com/maven/sizebay-kikaha-jdbi/</url>
 			</repository>
 		</distributionManagement>
 
