@@ -1,0 +1,62 @@
+name: CI Production
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install Java and Maven
+        uses: actions/setup-java@v1
+        with:
+          java-version: "8"
+
+      - name: Cache local Maven repository
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.PRODUCTION_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PRODUCTION_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.PRODUCTION_AWS_REGION }}
+
+      - name: Get Token to Sizebay Maven repository (code artifact)
+        run: echo "SIZEBAY_MAVEN_TOKEN=`aws codeartifact get-authorization-token --domain sizebay --domain-owner 839781922904 --query authorizationToken --output text`" >> $GITHUB_ENV
+
+      - name: Configure Maven settings.xml
+        uses: s4u/maven-settings-action@v2.4.0
+        with:
+          servers: |
+            [{
+              "id": "sizebay-sizebay-kikaha-jdbi",
+              "username": "aws",
+              "password": "${{ env.SIZEBAY_MAVEN_TOKEN }}"
+            }]
+          profiles: |
+            [{
+              "id": "sizebay-sizebay-kikaha-jdbi",
+              "activation": {
+                "activeByDefault": "true"
+              },
+              "repositories": {
+                "repository": {
+                    "id": "sizebay-sizebay-kikaha-jdbi",
+                    "url": "${{ secrets.SIZEBAY_MAVEN_URL }}"
+                }
+              }
+            }]
+
+      - name: Clone this repository
+        uses: actions/checkout@v2
+
+      - name: Build & Deploy
+        run: mvn clean deploy
