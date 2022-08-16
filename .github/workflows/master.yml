@@ -37,19 +37,19 @@ jobs:
         with:
           servers: |
             [{
-              "id": "sizebay-sizebay-kikaha-jdbi",
+              "id": "sizebay--sizebay-kikaha-jdbi",
               "username": "aws",
               "password": "${{ env.SIZEBAY_MAVEN_TOKEN }}"
             }]
           profiles: |
             [{
-              "id": "sizebay-sizebay-kikaha-jdbi",
+              "id": "sizebay--sizebay-kikaha-jdbi",
               "activation": {
                 "activeByDefault": "true"
               },
               "repositories": {
                 "repository": {
-                    "id": "sizebay-sizebay-kikaha-jdbi",
+                    "id": "sizebay--sizebay-kikaha-jdbi",
                     "url": "${{ secrets.SIZEBAY_MAVEN_URL }}"
                 }
               }
