@@ -11,7 +11,7 @@
 
 		<groupId>com.sizebay.kikaha</groupId>
 		<artifactId>sizebay-kikaha-jdbi</artifactId>
-		<version>0.3.0</version>
+		<version>0.4.0</version>
 		<packaging>pom</packaging>
 		<name>${project.artifactId}</name>
 
@@ -59,6 +59,11 @@
             <artifactId>jdbi3-sqlobject</artifactId>
             <version>${version.jdbi}</version>
         </dependency>
+	    <dependency>
+		    <groupId>org.jdbi</groupId>
+		    <artifactId>jdbi3-postgres</artifactId>
+		    <version>${version.jdbi}</version>
+	    </dependency>
         <!-- test dependencies -->
         <dependency>
             <groupId>com.h2database</groupId>
