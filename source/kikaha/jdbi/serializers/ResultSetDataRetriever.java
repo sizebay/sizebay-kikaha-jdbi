@@ -39,6 +39,11 @@ public abstract class ResultSetDataRetriever {
 		RETRIEVERS.put( Date.class, ( c, rs, nm ) -> rs.getTimestamp( nm ) );
 		RETRIEVERS.put( java.sql.Date.class, ( c, rs, nm ) -> rs.getDate( nm ) );
 		RETRIEVERS.put( String.class, ( c, rs, nm ) -> rs.getString( nm ) );
+		RETRIEVERS.put( UUID.class, ResultSetDataRetriever::retrieveUUID );
+	}
+
+	private static UUID retrieveUUID(Class<?> t, ResultSet rs, String nm) throws SQLException {
+		return UUID.fromString(nm);
 	}
 
 	static Boolean retrieveBoolean( Class<?> t, ResultSet rs, String nm ) throws SQLException {
