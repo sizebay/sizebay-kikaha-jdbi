@@ -11,6 +11,7 @@ import kikaha.db.DataSourceProducer;
 import lombok.extern.slf4j.Slf4j;
 import org.jdbi.v3.core.Jdbi;
 import kikaha.jdbi.serializers.AnnotatedEntityMapperFactory;
+import org.jdbi.v3.postgres.PostgresPlugin;
 
 /**
  *
@@ -54,6 +55,7 @@ public class KikahaJDBIExtension implements CustomClassConstructor {
 
 		final Jdbi db = Jdbi.create( dataSource );
 		db.registerColumnMapper( new AnnotatedEntityMapperFactory() );
+		db.installPlugin(new PostgresPlugin());
 		db.installPlugins();
 		return db;
 	}
