@@ -30,20 +30,57 @@ public abstract class ResultSetDataRetriever {
 		RETRIEVERS.put( float.class, ( c, rs, nm ) -> rs.getFloat( nm ) );
 		RETRIEVERS.put( Double.class, ResultSetDataRetriever::retrieveDouble );
 		RETRIEVERS.put( double.class, ( c, rs, nm ) -> rs.getDouble( nm ) );
-		RETRIEVERS.put( BigDecimal.class, ( c, rs, nm ) -> rs.getBigDecimal( nm ) );
-		RETRIEVERS.put( Timestamp.class, ( c, rs, nm ) -> rs.getTimestamp( nm ) );
-		RETRIEVERS.put( LocalDateTime.class, ( c, rs, nm ) -> rs.getTimestamp(nm).toLocalDateTime() );
-		RETRIEVERS.put( LocalDate.class, ( c, rs, nm ) -> rs.getTimestamp( nm ).toLocalDateTime().toLocalDate() );
-		RETRIEVERS.put( LocalTime.class, ( c, rs, nm ) -> rs.getTimestamp( nm ).toLocalDateTime().toLocalTime() );
-		RETRIEVERS.put( Time.class, ( c, rs, nm ) -> rs.getTime( nm ) );
-		RETRIEVERS.put( Date.class, ( c, rs, nm ) -> rs.getTimestamp( nm ) );
+		RETRIEVERS.put( BigDecimal.class, ResultSetDataRetriever::retrieveBigDecimal );
+		RETRIEVERS.put( Timestamp.class, ResultSetDataRetriever::retrieveTimestamp );
+		RETRIEVERS.put( LocalDateTime.class, ResultSetDataRetriever::retrieveLocalDateTime );
+		RETRIEVERS.put( LocalDate.class, ResultSetDataRetriever::retrieveLocalDate );
+		RETRIEVERS.put( LocalTime.class, ResultSetDataRetriever::retrieveLocalTime );
+		RETRIEVERS.put( Time.class, ResultSetDataRetriever::retrieveTime );
+		RETRIEVERS.put( Date.class, ResultSetDataRetriever::retrieveDate );
 		RETRIEVERS.put( java.sql.Date.class, ( c, rs, nm ) -> rs.getDate( nm ) );
 		RETRIEVERS.put( String.class, ( c, rs, nm ) -> rs.getString( nm ) );
 		RETRIEVERS.put( UUID.class, ResultSetDataRetriever::retrieveUUID );
 	}
 
 	private static UUID retrieveUUID(Class<?> t, ResultSet rs, String nm) throws SQLException {
-		return UUID.fromString(nm);
+		final String string = rs.getString(nm);
+
+		return (string != null && !string.isEmpty()) ? UUID.fromString(string) : null;
+	}
+
+	static BigDecimal retrieveBigDecimal( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getBigDecimal( nm ) : null;
+	}
+
+	static Timestamp retrieveTimestamp( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getTimestamp( nm ) : null;
+	}
+
+	static LocalDateTime retrieveLocalDateTime( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getTimestamp(nm).toLocalDateTime() : null;
+	}
+
+	static LocalDate retrieveLocalDate( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getTimestamp( nm ).toLocalDateTime().toLocalDate() : null;
+	}
+
+	static LocalTime retrieveLocalTime( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getTimestamp( nm ).toLocalDateTime().toLocalTime() : null;
+	}
+
+	static Date retrieveDate( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getTimestamp( nm ) : null;
+	}
+
+	static Time retrieveTime( Class<?> t, ResultSet rs, String nm ) throws SQLException {
+		final String string = rs.getString( nm );
+		return ( string != null && !string.isEmpty() ) ? rs.getTime( nm ) : null;
 	}
 
 	static Boolean retrieveBoolean( Class<?> t, ResultSet rs, String nm ) throws SQLException {
