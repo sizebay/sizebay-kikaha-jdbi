@@ -13,7 +13,7 @@ import org.jdbi.v3.sqlobject.transaction.Transaction;
 @JDBI
 public interface UserQueries {
 
-	default void initializeDatabase() {
+	public default void initializeDatabase() {
 		deleteUsersTableIfExists();
 		deleteRolesTableIfExists();
 		createUsersTable();
