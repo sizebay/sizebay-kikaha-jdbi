@@ -59,4 +59,4 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Build & Deploy
-        run: mvn clean deploy
+        run: mvn clean install deploy:deploy
