@@ -19,9 +19,9 @@
 
 		<distributionManagement>
 			<repository>
-				<id>sizebay--sizebay-kikaha-jdbi</id>
-				<name>sizebay--sizebay-kikaha-jdbi</name>
-				<url>https://sizebay-839781922904.d.codeartifact.us-east-1.amazonaws.com/maven/sizebay-kikaha-jdbi/</url>
+				<id>sizebay--maven</id>
+				<name>sizebay--maven</name>
+				<url>https://sizebay-839781922904.d.codeartifact.us-east-1.amazonaws.com/maven/maven/</url>
 			</repository>
 		</distributionManagement>
 
